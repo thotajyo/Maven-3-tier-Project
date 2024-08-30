@@ -105,8 +105,7 @@ pipeline{
                     dir('Kubernetes-Manifests-file') {
                         withKubeConfig(caCertificate: 'github-token', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                                 sh 'aws eks update-kubeconfig --name project-eks --region us-east-1'
-                                sh 'kubectl apply -f deployment.yaml'
-                                sh 'kubectl apply -f service.yaml'
+                                sh 'kubectl apply -f deploy_svc.yml'
 
                         }   
                     }
